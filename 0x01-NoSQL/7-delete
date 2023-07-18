@@ -2,4 +2,4 @@
 // in the collection school:
 // The database name will be passed as option of mongo command
 
-db.school.delete({name: "Holberton school"})
+db.school.deleteMany({name: "Holberton school"})
