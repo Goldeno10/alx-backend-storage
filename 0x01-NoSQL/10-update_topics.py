@@ -10,3 +10,10 @@ Task:
     in the school
 """
 
+
+def update_topics(mongo_collection, name, topics):
+    """
+    Python function that changes all topics of a
+    school document based on the name
+    """
+    
