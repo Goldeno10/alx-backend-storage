@@ -57,4 +57,3 @@ class Cache:
         """
         data = self._redis.get(key) if not fn else fn(self._redis.get(key))
         return data
-        
