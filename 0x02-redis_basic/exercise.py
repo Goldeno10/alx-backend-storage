@@ -30,7 +30,7 @@ Task:
 
 
 import redis
-from typing import Union
+from typing import Union, Callable
 import uuid
 
 
@@ -49,7 +49,7 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key, fn=None):
+    def get(self, key: str, fn: Callable = None):
         """
         method that take a key string argument and an optional Callable
         argument named fn. This callable will be used to convert the data
