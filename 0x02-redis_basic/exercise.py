@@ -55,7 +55,9 @@ class Cache:
         argument named fn. This callable will be used to convert the data
         back to the desired format.
         """
-        data: Union[Awaitable, Any] = self._redis.get(key) if not fn else fn(self._redis.get(key))
+        data: Union[Awaitable, Any] = self._redis.get(key) if not fn else fn(
+            self._redis.get(key)
+            )
         return data
 
     def get_str(self, key: str) -> str:
@@ -66,15 +68,14 @@ class Cache:
         """ convert the data back to the integer format."""
         return self.get(key, lambda value: int(value))
 
+# cache = Cache()
 
-cache = Cache()
+# TEST_CASES = {
+#     b"foo": None,
+#     123: int,
+#     "bar": lambda d: d.decode("utf-8")
+# }
 
-TEST_CASES = {
-    b"foo": None,
-    123: int,
-    "bar": lambda d: d.decode("utf-8")
-}
-
-for value, fn in TEST_CASES.items():
-    key = cache.store(value)
-    assert cache.get(key, fn=fn) == value
+# for value, fn in TEST_CASES.items():
+#     key = cache.store(value)
+#     assert cache.get(key, fn=fn) == value
