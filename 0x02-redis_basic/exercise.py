@@ -35,7 +35,7 @@ from typing import Any, Awaitable, Union, Callable
 import uuid
 
 
-def count_calls(method):
+def count_calls(method: Callable) -> Callable:
     """ decorator that takes a single method Callable
     argument and returns a Callable.
     """
