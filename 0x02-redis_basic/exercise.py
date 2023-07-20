@@ -35,7 +35,7 @@ from typing import Any, Awaitable, Union, Callable
 import uuid
 
 
-def replay(method: Callable) -> None:
+def replay(method: Callable):
     """
     This function displays the history of calls of a particular
     function.
