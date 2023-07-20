@@ -28,19 +28,20 @@ from typing import Callable
 redis_client = redis.Redis()
 
 
-# Helper function to generate a cache key
 def get_cache_key(url: str) -> str:
+    """Helper function to generate a cache key"""
     return f"cache:{url}"
 
 
-# Helper function to generate a count key
 def get_count_key(url: str) -> str:
+    """Helper function to generate a count key"""
     return f"count:{url}"
 
 
-# Decorator for caching with expiration time
 def cache_with_expiration(seconds: int) -> Callable:
+    """Decorator for caching with expiration time"""
     def decorator(func: Callable) -> Callable:
+        """Decorator for caching with expiration time"""
         @functools.wraps(func)
         def wrapper(url: str) -> str:
             cache_key = get_cache_key(url)
@@ -56,8 +57,8 @@ def cache_with_expiration(seconds: int) -> Callable:
     return decorator
 
 
-# Decorator for tracking access count
 def track_access_count(func: Callable) -> Callable:
+    """Decorator for tracking access count"""
     @functools.wraps(func)
     def wrapper(url: str) -> str:
         count_key = get_count_key(url)
@@ -70,6 +71,10 @@ def track_access_count(func: Callable) -> Callable:
 @cache_with_expiration(seconds=10)
 @track_access_count
 def get_page(url: str) -> str:
+    """
+    This function It uses the requests module to obtain the HTML
+    content of a particular URL and returns it.
+    """
     response = requests.get(url)
     if response.status_code == 200:
         return response.text
