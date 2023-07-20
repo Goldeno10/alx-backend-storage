@@ -40,6 +40,7 @@ def count_calls(f):
     argument and returns a Callable.
     """
     method_name = f.__qualname__
+
     @wraps(f)
     def wrapper(self, *args, **kwargs):
         """"""
@@ -94,17 +95,3 @@ class Cache:
 # for value, fn in TEST_CASES.items():
 #     key = cache.store(value)
 #     assert cache.get(key, fn=fn) == value
-import functools
-
-def count_calls(method):
-    method_name = method.__qualname__  # Get the qualified name of the method
-
-    @functools.wraps(method)
-    def wrapper(self, *args, **kwargs):
-        # Increment the count for this method
-        self.redis.incr(method_name)
-
-        # Call the original method and return its result
-        return method(self, *args, **kwargs)
-
-    return wrapper
