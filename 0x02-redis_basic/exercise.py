@@ -35,17 +35,17 @@ from typing import Any, Awaitable, Union, Callable
 import uuid
 
 
-def count_calls(f):
+def count_calls(method):
     """ decorator that takes a single method Callable
     argument and returns a Callable.
     """
-    method_name = f.__qualname__
+    method_name = method.__qualname__
 
-    @functools.wraps(f)
+    @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
         """wrapper function for the decorator"""
         self._redis.incr(method_name)
-        return f(self, *args, **kwargs)
+        return method(self, *args, **kwargs)
     return wrapper
 
 
