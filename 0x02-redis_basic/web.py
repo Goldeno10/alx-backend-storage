@@ -20,7 +20,6 @@ Bonus: implement this use case with decorators.
 import functools
 import requests
 import redis
-from datetime import timedelta
 from typing import Callable
 
 
@@ -45,7 +44,7 @@ def cache_with_expiration(seconds: int) -> Callable:
             if cached_result:
                 return cached_result.decode('utf-8')
             result = func(url)
-            func.redis_client.setex(cache_key, timedelta(seconds=seconds), result)
+            func.redis_client.setex(cache_key, seconds, result)
             return result
         return wrapper
     return decorator
