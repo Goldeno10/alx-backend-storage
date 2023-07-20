@@ -29,7 +29,7 @@ Task:
 """
 
 
-from functools import wraps
+import functools
 import redis
 from typing import Any, Awaitable, Union, Callable
 import uuid
@@ -41,9 +41,9 @@ def count_calls(f):
     """
     method_name = f.__qualname__
 
-    @wraps(f)
+    @functools.wraps(f)
     def wrapper(self, *args, **kwargs):
-        """"""
+        """wrapper function for the decorator"""
         self._redis.incr(method_name)
         return f(self, *args, **kwargs)
     return wrapper
@@ -83,15 +83,3 @@ class Cache:
     def get_int(self, key: str) -> int:
         """ convert the data back to the integer format."""
         return self.get(key, lambda value: int(value))
-
-# cache = Cache()
-
-# TEST_CASES = {
-#     b"foo": None,
-#     123: int,
-#     "bar": lambda d: d.decode("utf-8")
-# }
-
-# for value, fn in TEST_CASES.items():
-#     key = cache.store(value)
-#     assert cache.get(key, fn=fn) == value
