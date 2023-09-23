@@ -10,7 +10,7 @@
 --  better to distribute the load!
 --  (especially in the case of a very large table)
 -- Create a temporary table to hold the ranks
-SELECT origin, SUM(nb_fans) AS fans
-FROM metal_bands
+SELECT origin, SUM(fans) AS nb_fans
+FROM bands
 GROUP BY origin
-ORDER BY fans DESC;
+ORDER BY nb_fans DESC;
