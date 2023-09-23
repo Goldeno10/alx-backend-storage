@@ -10,20 +10,7 @@
 --  better to distribute the load!
 --  (especially in the case of a very large table)
 -- Create a temporary table to hold the ranks
-CREATE TEMPORARY TABLE temp_ranked_origins AS
-SELECT
-    origin,
-    DENSE_RANK() OVER (ORDER BY SUM(nb_fans) ASC) AS country_rank
-FROM
-    metal_bands
-GROUP BY
-    origin;
-
--- Retrieve the ranked country origins
-SELECT
-    origin,
-    country_rank
-FROM
-    temp_ranked_origins
-ORDER BY
-    country_rank;
+SELECT origin, SUM(nb_fans) AS fans
+FROM metal_bands
+GROUP BY origin
+ORDER BY fans DESC;
