@@ -16,7 +16,7 @@ BEGIN
     IF b = 0 THEN
         RETURN 0;
     ELSE
-        RETURN CAST(CAST(a AS DECIMAL) / CAST(b AS DECIMAL) as DECIMAL);
+        RETURN CAST(a AS DECIMAL(10, 2)) / CAST(b AS DECIMAL(10, 2));
     END IF;
 END;
 //
