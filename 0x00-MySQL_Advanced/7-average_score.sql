@@ -20,9 +20,7 @@ BEGIN
     -- Update the user's average score in the users table
     UPDATE users
     SET average_score = avg_score
-    WHERE id = user_id;
-    
-    -- You can add additional logic here if needed
+    WHERE id = user_id;    
 END;
 //
 DELIMITER ;
