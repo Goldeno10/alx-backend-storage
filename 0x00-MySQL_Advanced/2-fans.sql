@@ -11,6 +11,6 @@
 --  (especially in the case of a very large table)
 -- Create a temporary table to hold the ranks
 SELECT origin, SUM(fans) AS nb_fans
-FROM bands
+FROM metal_bands
 GROUP BY origin
 ORDER BY nb_fans DESC;
