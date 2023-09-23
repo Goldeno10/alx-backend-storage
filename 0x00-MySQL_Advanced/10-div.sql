@@ -13,12 +13,10 @@ DELIMITER //
 CREATE FUNCTION SafeDiv(a INT, b INT)
 RETURNS DECIMAL
 BEGIN
-    DECLARE result DECIMAL;
     IF b = 0 THEN
         RETURN 0;
     ELSE
-        result = CAST(a AS DECIMAL) / CAST(b AS DECIMAL);
-        RETURN result;
+        RETURN CAST(a AS DECIMAL) / CAST(b AS DECIMAL);
     END IF;
 END;
 //
