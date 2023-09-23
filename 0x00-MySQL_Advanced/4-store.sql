@@ -14,7 +14,7 @@ BEGIN
     UPDATE items
     -- NEW is a special variable that contains the new row
     SET quantity = quantity - NEW.number
-    WHERE item_name = NEW.item_name;
+    WHERE name = NEW.item_name;
 END;
 //
 DELIMITER ;
