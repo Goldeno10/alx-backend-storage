@@ -11,7 +11,7 @@
 SELECT
     band_name,
     CASE
-        WHEN YEAR(split) = NULL THEN YEAR('2022-01-01') - YEAR(formed)
+        WHEN YEAR(split) = NULL THEN YEAR('2022') - YEAR(formed)
         ELSE YEAR(split) - YEAR(formed)
     END AS lifespan
 FROM
