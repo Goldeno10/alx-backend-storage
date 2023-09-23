@@ -17,7 +17,7 @@ BEGIN
     IF b = 0 THEN
         RETURN 0;
     ELSE
-        result = a / b;
+        result = CAST(a AS DECIMAL) / CAST(b AS DECIMAL);
         RETURN result;
     END IF;
 END;
