@@ -13,8 +13,8 @@ BEGIN
     -- Decrease the quantity of the item in the items table
     UPDATE items
     -- NEW is a special variable that contains the new row
-    SET quantity = quantity - NEW.quantity
-    WHERE item_id = NEW.item_id;
+    SET quantity = quantity - NEW.number
+    WHERE item_name = NEW.item_name;
 END;
 //
 DELIMITER ;
