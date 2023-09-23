@@ -11,7 +11,7 @@ DELIMITER //
 CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 BEGIN
     -- Adjust the precision and scale as needed
-    DECLARE avg_score DECIMAL(10, 2); 
+    DECLARE avg_score DECIMAL; 
     -- Calculate the average score for the user
     SELECT AVG(score) INTO avg_score
     FROM corrections
