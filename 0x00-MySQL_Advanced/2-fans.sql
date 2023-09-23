@@ -13,7 +13,7 @@
 CREATE TEMPORARY TABLE temp_ranked_origins AS
 SELECT
     origin,
-    DENSE_RANK() OVER (ORDER BY SUM(nb_fans) DESC) AS country_rank
+    DENSE_RANK() OVER (ORDER BY SUM(nb_fans) ASC) AS country_rank
 FROM
     metal_bands
 GROUP BY
